@@ -61,19 +61,19 @@ class KochavaTrackerPlugin : FlutterPlugin, MethodCallHandler {
 
                 // void setLogLevel(LogLevel logLevel)
                 "setLogLevel" -> {
-                    Tracker.getInstance().setLogLevel(LogLevel.fromString(call.arguments()))
+                    Tracker.getInstance().setLogLevel(LogLevel.fromString(call.arguments()!!))
                     result.success(null)
                 }
 
                 // void setSleep(bool sleep)
                 "setSleep" -> {
-                    Tracker.getInstance().setSleep(call.arguments())
+                    Tracker.getInstance().setSleep(call.arguments()!!)
                     result.success(null)
                 }
 
                 // void setAppLimitAdTracking(bool appLimitAdTracking)
                 "setAppLimitAdTracking" -> {
-                    Tracker.getInstance().setAppLimitAdTracking(call.arguments())
+                    Tracker.getInstance().setAppLimitAdTracking(call.arguments()!!)
                     result.success(null)
                 }
 
@@ -95,7 +95,7 @@ class KochavaTrackerPlugin : FlutterPlugin, MethodCallHandler {
 
                 // void enableAndroidInstantApps(string instantAppGuid)
                 "enableAndroidInstantApps" -> {
-                    Tracker.getInstance().enableInstantApps(call.arguments())
+                    Tracker.getInstance().enableInstantApps(call.arguments()!!)
                     result.success(null)
                 }
 
@@ -161,7 +161,7 @@ class KochavaTrackerPlugin : FlutterPlugin, MethodCallHandler {
 
                 // void shutdown(bool deleteData)
                 "shutdown" -> {
-                    Tracker.getInstance().shutdown(context, call.arguments())
+                    Tracker.getInstance().shutdown(context, call.arguments()!!)
                     result.success(null)
                 }
 
@@ -202,19 +202,19 @@ class KochavaTrackerPlugin : FlutterPlugin, MethodCallHandler {
 
                 // void registerPushToken(string token)
                 "registerPushToken" -> {
-                    Engagement.getInstance().registerPushToken(call.arguments())
+                    Engagement.getInstance().registerPushToken(call.arguments()!!)
                     result.success(null)
                 }
 
                 // void setPushEnabled(bool enabled)
                 "setPushEnabled" -> {
-                    Engagement.getInstance().setPushEnabled(call.arguments())
+                    Engagement.getInstance().setPushEnabled(call.arguments()!!)
                     result.success(null)
                 }
 
                 // void sendEvent(string name)
                 "sendEvent" -> {
-                    Events.getInstance().send(call.arguments())
+                    Events.getInstance().send(call.arguments()!!)
                     result.success(null)
                 }
 
