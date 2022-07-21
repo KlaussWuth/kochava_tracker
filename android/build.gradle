@@ -1,0 +1,52 @@
+group 'com.kochava.kochava_tracker'
+version '2.0.0'
+
+buildscript {
+    ext.kotlin_version = '1.6.10'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        flatDir {
+            dirs 'libs'
+            dirs project(':kochava_tracker').file('libs')
+        }
+    }
+}
+
+android {
+    compileSdkVersion 31
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    //implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation (name: "KochavaCore", ext: "aar")
+    implementation (name: "KochavaTracker", ext: "aar")
+    implementation (name: "KochavaTrackerEvents", ext: "aar")
+    implementation (name: "KochavaTrackerEngagement", ext: "aar")
+    implementation (name: "KochavaTrackerDatapointNetwork", ext: "aar")
+}
